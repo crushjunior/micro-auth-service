@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" logicalFilePath="path-independent"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="1_init_tables" author="v.charushnikov">
+        <comment>Создание таблиц базы данных</comment>
+        <sqlFile path="sql/init/1_init_tables.sql" relativeToChangelogFile="true"/>
+        <rollback>
+            <sqlFile path="sql/rollback/1_drop_tables.sql" relativeToChangelogFile="true"/>
+        </rollback>
+
+    </changeSet>
+    <changeSet id="2_alter_table_user_profile.sql" author="v.charushnikov">
+        <comment>Добавление constraint</comment>
+        <sqlFile path="sql/constraint/2_alter_table_user_profile.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+</databaseChangeLog>
