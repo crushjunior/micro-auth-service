@@ -11,6 +11,12 @@ spring:
     url: jdbc:postgresql://${PSQL_DATASOURCE_URL}:5432/MicroAuthDB
     username: ${PSQL_DATASOURCE_USERNAME}
     password: ${PSQL_DATASOURCE_PASSWORD}
+    jpa:
+      open-in-view: false
+      properties.hibernate:
+        show_sql: true
+        format_sql: true
+        hbm2ddl.auto: validate
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
     database-change-log-lock-table: LIQ_DATABASECHANGELOGLOCK
