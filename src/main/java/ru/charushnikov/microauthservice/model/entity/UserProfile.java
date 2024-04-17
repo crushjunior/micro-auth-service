@@ -20,7 +20,7 @@ import java.util.UUID;
 @Table(name = "user_profile")
 public class UserProfile {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(nullable = false)
@@ -33,11 +33,6 @@ public class UserProfile {
     @CreatedDate
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate appRegistrationDate;
-
-    @Column(name = "mobile_phone")
-    @Pattern(regexp = "\\+7\\d{10}"/*,
-            message = "Mobile phone must start with +7 and contain 11 digits"*/)
-    private String mobilePhone;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
