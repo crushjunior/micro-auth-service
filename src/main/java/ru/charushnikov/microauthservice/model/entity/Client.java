@@ -1,6 +1,7 @@
 package ru.charushnikov.microauthservice.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,7 @@ import java.util.UUID;
 @Table(name = "client")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @Column(name = "first_name")
@@ -24,6 +25,11 @@ public class Client {
 
     @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "mobile_phone")
+    @Pattern(regexp = "\\+7\\d{10}"/*,
+            message = "Mobile phone must start with +7 and contain 11 digits"*/)
+    private String mobilePhone;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "passport_number")

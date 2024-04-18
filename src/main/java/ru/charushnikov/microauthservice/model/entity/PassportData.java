@@ -16,12 +16,13 @@ import java.time.LocalDate;
 @Table(name = "passport_data")
 public class PassportData {
     @Id
+    @Column(name = "passport_number")
     private String identificationPassportNumber;
 
-    @Column(name = "issuance_date")
+    @Column(name = "issuance_date", nullable = false)
     private LocalDate issuanceDate;
 
-    @Column(name = "birth_date")
+    @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
 }
 
