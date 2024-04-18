@@ -3,23 +3,20 @@ package ru.charushnikov.microauthservice.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.charushnikov.microauthservice.model.dto.request.RegisterRequestDto;
 import ru.charushnikov.microauthservice.model.dto.response.RegisterResponseDto;
 import ru.charushnikov.microauthservice.service.RegistrationService;
 
 @RestController
-@RequestMapping("/user-service/registration")
+@RequestMapping("/auth-service/registration")
 @RequiredArgsConstructor
 public class RegistrationController {
 
     private final RegistrationService registrationService;
 
-    @PatchMapping("/user-profile")
-//    @Operation(summary = "EP4: Register client in application", tags = "registration",
+    @PostMapping("/user-profile/new")
+//    @Operation(summary = "EP1: Register client in application", tags = "registration",
 //            responses = {
 //                    @ApiResponse(responseCode = "200", description = "Success",
 //                            headers = @Header(name = "Set-Cookie",
@@ -32,7 +29,6 @@ public class RegistrationController {
 //            })
     public ResponseEntity<RegisterResponseDto> registerClientInApp(@Valid @RequestBody RegisterRequestDto dto) {
         RegisterResponseDto registerRequestClientDto = registrationService.registerClientInApp(dto);
-
         return ResponseEntity.ok(registerRequestClientDto);
     }
 }
