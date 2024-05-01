@@ -39,3 +39,9 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${server.port}
     preferIpAddress: true
+
+micro:
+  app:
+    jwtExpirationMs: 3600000
+    jwtRefreshExpirationMs: 12000000
+    jwtSecret: microSecretKey

@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -23,8 +22,8 @@ public class RefreshToken {
     @Column(nullable = false, unique = true)
     private String token;
 
-    @Column(nullable = false, name = "expire_date")
-    private Instant expireDate;
+    @Column(nullable = false, name = "expiry_date")
+    private Instant expiryDate;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")

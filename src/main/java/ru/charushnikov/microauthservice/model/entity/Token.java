@@ -23,8 +23,8 @@ public class Token {
     @Column(nullable = false, unique = true)
     private String token;
 
-    @Column(nullable = false, name = "expire_date")
-    private Instant expireDate;
+    @Column(nullable = false, name = "expiry_date")
+    private Instant expiryDate;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
