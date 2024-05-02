@@ -21,4 +21,5 @@ public class RegisterResponseDto {
     private String identificationPassportNumber;
     private String email;
     private LocalDate appRegistrationDate;
+    private TokensDto tokensDto;
 }
