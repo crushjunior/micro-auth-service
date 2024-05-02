@@ -55,7 +55,7 @@ public class TokenServiceImpl implements TokenService {
         if (tokenExist.isPresent()) {
             tokenRepository.updateToken(jws, tokenExist.get().getId());
         } else
-            token = tokenRepository.save(token);
+            tokenRepository.save(token);
         return token;
     }
 }

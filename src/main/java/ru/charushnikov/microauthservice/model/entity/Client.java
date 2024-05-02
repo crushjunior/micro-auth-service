@@ -27,8 +27,6 @@ public class Client {
     private String lastName;
 
     @Column(name = "mobile_phone")
-    @Pattern(regexp = "\\+7\\d{10}"/*,
-            message = "Mobile phone must start with +7 and contain 11 digits"*/)
     private String mobilePhone;
 
     @OneToOne(fetch = FetchType.LAZY)
