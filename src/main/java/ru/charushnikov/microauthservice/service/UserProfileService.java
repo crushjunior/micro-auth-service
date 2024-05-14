@@ -7,4 +7,6 @@ import ru.charushnikov.microauthservice.model.entity.UserProfile;
 public interface UserProfileService {
 
     UserProfile registerUserProfile(RegisterRequestDto dto, Client client);
+
+    UserProfile findUserProfileByMobilePhone(String mobilePhone);
 }
