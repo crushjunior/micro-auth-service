@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: ${PORT}
 
 service:
   version: '@project.version@'
@@ -29,6 +29,33 @@ spring:
   servlet:
     multipart:
       max-file-size: 5MB
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS_URL}:29092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.header: false
+        spring.json.type.mapping: ${kafka.mapping.reservation}
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      group-id: reservation-group
+      properties:
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+        spring.json.trusted.packages: "*"
+        spring.json.add.type.header: false
+        spring.json.type.mapping: ${kafka.mapping.get-reservation}
+
+
+kafka:
+  topics:
+    shop-service:
+      request_reservation: product-id
+      response_reservation: amount-available-goods
+  mapping:
+    reservation: sendRequestReservation:ru.charushnikov.microauthservice.model.dto.kafka.RequestReservation
+    get-reservation: sendMessageResponse:ru.charushnikov.microauthservice.model.dto.kafka.ResponseReservation
 
 eureka:
   client:
