@@ -67,6 +67,11 @@ eureka:
     instance-id: ${spring.application.name}:${server.port}
     preferIpAddress: true
 
+feign:
+  client:
+    storage-service:
+      name: storage-service
+
 micro:
   app:
     jwtExpirationMs: 3600000
